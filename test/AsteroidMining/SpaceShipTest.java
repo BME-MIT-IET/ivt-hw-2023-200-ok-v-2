@@ -1,4 +1,4 @@
-package src.AsteroidMining.test;
+package test.AsteroidMining;
 
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
@@ -35,7 +35,7 @@ class SpaceShipTest {
     }
 
     @Test
-    void testRemoveResource_withExistingResource_shouldRemoveResource() {
+    void testRemoveExistingResource_shouldRemoveResource() {
         // Add the resource to the spaceShip's inventory
         spaceShip.addResource(resource);
 
@@ -68,7 +68,7 @@ class SpaceShipTest {
     }
 
     @Test
-    void testCountResource_withExistingResource_shouldReturnCount() {
+    void testCountExistingResources_shouldReturnCount() {
         // Add the resource to the spaceShip's inventory
         spaceShip.addResource(resource);
 
@@ -76,7 +76,7 @@ class SpaceShipTest {
     }
 
     @Test
-    void testCountResource_withNonExistingResource_shouldReturnZero() {
+    void testCountNonExistingResource_shouldReturnZero() {
         assertEquals(0, spaceShip.countResource(resource.getId()));
     }
 

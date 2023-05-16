@@ -1,4 +1,4 @@
-package src.AsteroidMining.test;
+package test.AsteroidMining;
 
 import org.junit.jupiter.api.Test;
 import src.AsteroidMining.ID;
