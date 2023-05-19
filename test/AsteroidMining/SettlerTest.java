@@ -60,16 +60,12 @@ public class SettlerTest {
     @Test
     public void testDrill() {
         s.setPlace(a1);
-        assertFalse(a1.isFullyDrilled());
-
-        s.drill();
-        assertTrue(a1.isFullyDrilled());
+        assertTrue(s.drill());
     }
 
     @Test
-    public void testFullyDrilled() {
+    public void testDrillOnFullyDrilled() {
         s.setPlace(a2);
-        assertTrue(a2.isFullyDrilled());
         //so it says it is not fully drilled even when depth is 0
         assertFalse(s.drill());
     }

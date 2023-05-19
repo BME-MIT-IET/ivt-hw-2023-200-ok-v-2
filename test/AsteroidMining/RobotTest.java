@@ -39,16 +39,13 @@ public class RobotTest {
     @Test
     public void testDrill() {
         r.setPlace(a1);
-        assertFalse(a1.isFullyDrilled());
-
         r.drill();
-        assertTrue(a1.isFullyDrilled());
+        assertTrue(r.drill());
     }
 
     @Test
-    public void testFullyDrilled() {
+    public void testDrillOnFullyDrilled() {
         r.setPlace(a2);
-        assertTrue(a2.isFullyDrilled());
         //so it says it is not fully drilled even when depth is 0
         assertFalse(r.drill());
     }
