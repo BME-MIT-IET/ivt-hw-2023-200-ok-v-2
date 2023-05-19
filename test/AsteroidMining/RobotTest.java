@@ -39,7 +39,6 @@ public class RobotTest {
     @Test
     public void testDrill() {
         r.setPlace(a1);
-        r.drill();
         assertTrue(r.drill());
     }
 
