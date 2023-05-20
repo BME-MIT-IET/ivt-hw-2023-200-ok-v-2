@@ -60,8 +60,8 @@ class AsteroidTest {
 
     @Test
     void isFullyDrilledTest() {
-        Asteroid fullyDrilledAsteroid = new Asteroid(0, 0, null, 0);
-        Asteroid partiallyDrilledAsteroid = new Asteroid(0, 0, null, 5);
+        Asteroid fullyDrilledAsteroid = new Asteroid(0, 0, new Carbon(), 0);
+        Asteroid partiallyDrilledAsteroid = new Asteroid(0, 0, new Carbon(), 5);
 
         assertTrue(fullyDrilledAsteroid.isFullyDrilled());
         assertFalse(partiallyDrilledAsteroid.isFullyDrilled());
@@ -80,14 +80,18 @@ class AsteroidTest {
     void explodeTest_Robot() {
         //Setting up 2 neighbouring asteroids, an explosion will happen on the asteroid on which robot resides
         Visitor robot = new Robot(0,0);
+        asteroid.addVisitor(robot);
+
+        asteroid.addResource(new Uranium());
         Asteroid neighbouringAsteroid = new Asteroid(100, 100, null, 10);
         asteroid.addNeighbour(neighbouringAsteroid);
         neighbouringAsteroid.addNeighbour(asteroid);
 
-        asteroid.addVisitor(robot);
-
         List<Visitor> list = new ArrayList<>();
         list.add(robot);
+        //ConcurrentModificationException thrown
+        asteroid.explode(true);
+
         assertEquals(list, neighbouringAsteroid.getVisitors());
     }
 
