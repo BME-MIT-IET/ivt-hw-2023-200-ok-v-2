@@ -13,8 +13,8 @@ public class Asker {
         this.out = out;
     }
 
-    public int ask(String message) {
+    public String ask(String message) {
         out.println(message);
-        return scanner.nextInt();
+        return scanner.nextLine();
     }
 }
