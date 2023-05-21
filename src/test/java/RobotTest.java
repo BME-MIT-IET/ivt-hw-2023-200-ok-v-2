@@ -1,8 +1,8 @@
-package test.AsteroidMining;
+package src.test.java;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
-import src.AsteroidMining.*;
+import src.main.java.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 

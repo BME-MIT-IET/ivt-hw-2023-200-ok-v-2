@@ -1,8 +1,7 @@
-package test.AsteroidMining;
+package src.test.java;
 
 import org.junit.jupiter.api.Test;
-import src.AsteroidMining.ID;
-import src.AsteroidMining.Resource;
+import src.main.java.*;
 
 import java.awt.image.BufferedImage;
 import static org.junit.jupiter.api.Assertions.*;

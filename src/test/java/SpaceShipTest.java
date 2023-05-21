@@ -1,10 +1,8 @@
-package test.AsteroidMining;
+package src.test.java;
 
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
-import src.AsteroidMining.Carbon;
-import src.AsteroidMining.Resource;
-import src.AsteroidMining.SpaceShip;
+import src.main.java.*;
 
 class SpaceShipTest {
 

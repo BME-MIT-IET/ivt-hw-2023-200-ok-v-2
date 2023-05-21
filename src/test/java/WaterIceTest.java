@@ -1,8 +1,7 @@
-package test.AsteroidMining;
+package src.test.java;
 
 import org.junit.jupiter.api.Test;
-import src.AsteroidMining.Asteroid;
-import src.AsteroidMining.WaterIce;
+import src.main.java.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
