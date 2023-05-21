@@ -2,6 +2,8 @@ package AsteroidMining;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 
 import static org.mockito.Mockito.when;
 import static org.mockito.Mockito.mock;
