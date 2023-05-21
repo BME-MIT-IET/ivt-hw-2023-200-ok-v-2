@@ -52,6 +52,7 @@ public class Asteroid extends Place {
     @Override
     public void tick() {
 
+        System.out.println("testing");
     }
 
     @Override
