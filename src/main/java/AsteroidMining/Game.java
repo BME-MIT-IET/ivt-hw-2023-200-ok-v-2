@@ -1,7 +1,7 @@
 package AsteroidMining;
 import javax.imageio.ImageIO;
 
-import src.main.java.AsteroidMining.Resources.STATE;
+import AsteroidMining.Resources.STATE;
 
 import java.awt.*;
 import java.awt.image.BufferStrategy;

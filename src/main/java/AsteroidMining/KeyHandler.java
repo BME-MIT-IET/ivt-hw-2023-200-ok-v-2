@@ -4,7 +4,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
 
-import src.main.java.AsteroidMining.Resources.STATE;
+import AsteroidMining.Resources.STATE;
 
 public class KeyHandler extends KeyAdapter {
     private Handler handler;

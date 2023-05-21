@@ -2,7 +2,7 @@ package AsteroidMining;
 
 import javax.imageio.ImageIO;
 
-import src.main.java.AsteroidMining.Resources.STATE;
+import Resources.STATE;
 
 import java.awt.*;
 import java.awt.event.MouseAdapter;
