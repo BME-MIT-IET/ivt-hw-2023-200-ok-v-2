@@ -102,8 +102,9 @@ public class SettlerTest {
 
     @Test
     public void buildRobot() {
-        Asker asker = mock(Asker.class);
-        when(asker.ask(anyString())).thenReturn("yes");
+        InputStream sysInBackup = System.in; // backup System.in to restore it later
+        ByteArrayInputStream in = new ByteArrayInputStream("yes".getBytes());
+        System.setIn(in);
 
         s.setPlace(a1);
         s.drill();
@@ -126,8 +127,10 @@ public class SettlerTest {
 
     @Test
     public void buildGate(){
-        Asker asker = mock(Asker.class);
-        when(asker.ask(anyString())).thenReturn("yes");
+
+        InputStream sysInBackup = System.in; // backup System.in to restore it later
+        ByteArrayInputStream in = new ByteArrayInputStream("yes".getBytes());
+        System.setIn(in);
 
         s.setPlace(a1);
         s.drill();
