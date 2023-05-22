@@ -5,9 +5,6 @@ import org.junit.jupiter.api.Test;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 
-import static org.mockito.Mockito.when;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.anyString;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class SettlerTest {
@@ -119,7 +116,7 @@ public class SettlerTest {
         s.mine();
 
         assertTrue(s.buildRobot());
-        assertTrue(a3.getNeighbour().getVisitors().contains(Robot.class));
+        assertTrue(a4.getNeighbour().getVisitors().contains(Robot.class));
     }
 
     @Test
