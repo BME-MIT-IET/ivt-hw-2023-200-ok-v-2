@@ -9,7 +9,6 @@ import static org.junit.jupiter.api.Assertions.*;
 class SunStormTest {
     Random rand = new Random();
     Handler h = new Handler();
-    Resource r = new Resource(resourceId);
 
     @Test
     void SettlerCollidesDies() {
@@ -18,6 +17,7 @@ class SunStormTest {
         int d = rand.nextInt(100);
 
         ID resourceId = ID.Inventory;
+        Resource r = new Resource(resourceId);
 
         Asteroid a1 = new Asteroid(x,y,r,d);
         Settler s1 = new Settler(x,y,h);
@@ -39,6 +39,7 @@ class SunStormTest {
         int d = rand.nextInt(100);
 
         ID resourceId = ID.Inventory;
+        Resource r = new Resource(resourceId);
 
         Asteroid a1 = new Asteroid(x, y, r, d);
         Robot r1 = new Robot(x, y);
@@ -60,6 +61,7 @@ class SunStormTest {
         int d = rand.nextInt(100);
 
         ID resourceId = ID.Inventory;
+        Resource r = new Resource(resourceId);
 
         Asteroid a1 = new Asteroid(x,y,r,d);
         Robot r1 = new Robot(x,y);
