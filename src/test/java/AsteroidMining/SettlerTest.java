@@ -116,7 +116,7 @@ public class SettlerTest {
         s.mine();
 
         assertTrue(s.buildRobot());
-        assertTrue(a4.getNeighbour().getVisitors().contains(Robot.class));
+        assertTrue(a4.getVisitors().contains(Robot.class));
     }
 
     @Test
