@@ -15,6 +15,7 @@ public class RobotTest {
         a1 = new Asteroid(1, 1, new Carbon(), 2);
         a2 = new Asteroid(1, 1, new Carbon(), 0);
         a2.addNeighbour(a1);
+        a1.addNeighbour(a2);
     }
 
     @Test
