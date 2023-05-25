@@ -35,6 +35,6 @@ jobs:
       with:
         image: nedaradonjic/ivt_200_ok
         registry: docker.io
-        dockerfile: Dockerfile.ci
+        dockerfile: docker/Dockerfile.prod
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
