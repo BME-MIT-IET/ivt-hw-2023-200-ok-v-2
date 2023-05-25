@@ -55,6 +55,7 @@ public abstract class GameObject {
 
     public void setId(ID id) {
         this.id = id;
+        System.out.println("///");  
     }
 
     public ID getId(){
