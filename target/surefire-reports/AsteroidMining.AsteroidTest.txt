@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: AsteroidMining.AsteroidTest
 -------------------------------------------------------------------------------
-Tests run: 9, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.584 s <<< FAILURE! - in AsteroidMining.AsteroidTest
-explodeTest_Robot  Time elapsed: 0.053 s  <<< ERROR!
+Tests run: 9, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.56 s <<< FAILURE! - in AsteroidMining.AsteroidTest
+explodeTest_Robot  Time elapsed: 0.038 s  <<< ERROR!
 java.util.ConcurrentModificationException
 	at AsteroidMining.AsteroidTest.explodeTest_Robot(AsteroidTest.java:92)
 

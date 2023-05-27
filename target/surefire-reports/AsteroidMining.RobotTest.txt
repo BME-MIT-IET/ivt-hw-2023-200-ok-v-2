@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: AsteroidMining.RobotTest
 -------------------------------------------------------------------------------
-Tests run: 6, Failures: 1, Errors: 1, Skipped: 0, Time elapsed: 0.073 s <<< FAILURE! - in AsteroidMining.RobotTest
-testDrillOnFullyDrilled  Time elapsed: 0.004 s  <<< FAILURE!
+Tests run: 6, Failures: 1, Errors: 1, Skipped: 0, Time elapsed: 0.066 s <<< FAILURE! - in AsteroidMining.RobotTest
+testDrillOnFullyDrilled  Time elapsed: 0.007 s  <<< FAILURE!
 org.opentest4j.AssertionFailedError: expected: <false> but was: <true>
 	at AsteroidMining.RobotTest.testDrillOnFullyDrilled(RobotTest.java:47)
 

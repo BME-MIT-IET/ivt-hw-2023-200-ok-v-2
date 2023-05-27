@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: AsteroidMining.SpaceShipTest
 -------------------------------------------------------------------------------
-Tests run: 12, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.083 s <<< FAILURE! - in AsteroidMining.SpaceShipTest
-testRemoveResourceById_wrongParam_shouldNotRemoveResource  Time elapsed: 0.007 s  <<< FAILURE!
+Tests run: 12, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.08 s <<< FAILURE! - in AsteroidMining.SpaceShipTest
+testRemoveResourceById_wrongParam_shouldNotRemoveResource  Time elapsed: 0.009 s  <<< FAILURE!
 org.opentest4j.AssertionFailedError: expected: <false> but was: <true>
 	at AsteroidMining.SpaceShipTest.testRemoveResourceById_wrongParam_shouldNotRemoveResource(SpaceShipTest.java:63)
 

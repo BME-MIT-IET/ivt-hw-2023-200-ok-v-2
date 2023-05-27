@@ -1,12 +1,12 @@
 -------------------------------------------------------------------------------
 Test set: AsteroidMining.SettlerTest
 -------------------------------------------------------------------------------
-Tests run: 14, Failures: 2, Errors: 1, Skipped: 0, Time elapsed: 0.384 s <<< FAILURE! - in AsteroidMining.SettlerTest
-testDrillOnFullyDrilled  Time elapsed: 0.031 s  <<< FAILURE!
+Tests run: 14, Failures: 2, Errors: 1, Skipped: 0, Time elapsed: 0.357 s <<< FAILURE! - in AsteroidMining.SettlerTest
+testDrillOnFullyDrilled  Time elapsed: 0.021 s  <<< FAILURE!
 org.opentest4j.AssertionFailedError: expected: <false> but was: <true>
 	at AsteroidMining.SettlerTest.testDrillOnFullyDrilled(SettlerTest.java:73)
 
-buildRobot  Time elapsed: 0.022 s  <<< ERROR!
+buildRobot  Time elapsed: 0.028 s  <<< ERROR!
 java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0
 	at AsteroidMining.SettlerTest.buildRobot(SettlerTest.java:122)
 
