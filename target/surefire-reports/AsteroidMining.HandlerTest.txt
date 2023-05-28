@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: AsteroidMining.HandlerTest
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.003 s <<< FAILURE! - in AsteroidMining.HandlerTest
+testCheckAsteroids  Time elapsed: 0 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
+	at AsteroidMining.HandlerTest.testCheckAsteroids(HandlerTest.java:48)
+

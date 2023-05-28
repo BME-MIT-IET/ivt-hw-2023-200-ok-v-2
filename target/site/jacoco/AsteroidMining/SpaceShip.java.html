@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>SpaceShip.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">gs-maven</a> &gt; <a href="index.source.html" class="el_package">AsteroidMining</a> &gt; <span class="el_source">SpaceShip.java</span></div><h1>SpaceShip.java</h1><pre class="source lang-java linenums">package AsteroidMining;
+
+import javax.imageio.ImageIO;
+
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.util.HashMap;
+/*Initializing SpaceShip*/
+public class SpaceShip extends GameObject{
+
+<span class="fc" id="L13">    private int capacity=10; /*SpaceShip's max capacity*/</span>
+<span class="fc" id="L14">    private int currentInventory=0;</span>
+
+<span class="fc" id="L16">    HashMap&lt;Resource, Integer&gt; resources = new HashMap&lt;Resource, Integer&gt;();</span>
+<span class="fc" id="L17">    BufferedImage img=null;</span>
+
+    public SpaceShip() {
+<span class="fc" id="L20">        super(ID.Inventory);</span>
+        try{
+<span class="fc" id="L22">            img = ImageIO.read(new File(&quot;Assets/inventory.png&quot;));</span>
+        }
+<span class="nc" id="L24">        catch(IOException e){</span>
+<span class="nc" id="L25">            e.printStackTrace();</span>
+<span class="fc" id="L26">        }</span>
+<span class="fc" id="L27">    }</span>
+
+    @Override
+    public void tick() {
+
+<span class="nc" id="L32">    }</span>
+
+    @Override
+    public void render(Graphics g) throws IOException {
+<span class="nc" id="L36">        int i = 0;</span>
+<span class="nc" id="L37">        g.setColor(Color.YELLOW);</span>
+<span class="nc" id="L38">        g.drawLine(70, 670, 500, 670);</span>
+
+<span class="nc" id="L40">        g.drawImage(img, 30, 630, 30,30, null);</span>
+<span class="nc bnc" id="L41" title="All 2 branches missed.">        for(Resource r: resources.keySet()){</span>
+<span class="nc" id="L42">            g.drawImage(r.getImg(), 70+i, 630, 30,30, null);</span>
+<span class="nc" id="L43">            i+=45;</span>
+<span class="nc" id="L44">        }</span>
+<span class="nc" id="L45">    }</span>
+
+    /*adding resource to the inventory*/
+    public boolean addResource(Resource r){
+<span class="fc" id="L49">        int num=0;</span>
+<span class="fc bfc" id="L50" title="All 2 branches covered.">        if(currentInventory&lt;capacity) {</span>
+<span class="fc bfc" id="L51" title="All 2 branches covered.">            if(resources.containsKey(r)) {</span>
+<span class="fc" id="L52">                num = resources.get(r);</span>
+<span class="fc" id="L53">                resources.put(r, num + 1);</span>
+
+            }
+            else {
+<span class="fc" id="L57">                resources.put(r, 1);</span>
+            }
+<span class="fc" id="L59">            currentInventory++;</span>
+<span class="fc" id="L60">            return true;</span>
+        }
+<span class="fc" id="L62">        else return false;</span>
+
+    }
+    /*removing resource from the inventory*/
+    public boolean removeResource(Resource r){
+<span class="fc bfc" id="L67" title="All 2 branches covered.">        if(resources.containsKey(r)){</span>
+<span class="fc" id="L68">            resources.remove(r, 1);</span>
+<span class="fc" id="L69">            currentInventory--;</span>
+<span class="fc" id="L70">            return true;</span>
+        }
+<span class="fc" id="L72">        return false;</span>
+    }
+    public boolean removeResource(ID id, int num){
+<span class="fc" id="L75">        Resource r = getResource(id);</span>
+<span class="pc bpc" id="L76" title="1 of 2 branches missed.">        if(resources.containsKey(r)){</span>
+<span class="fc" id="L77">            resources.remove(r, num);</span>
+<span class="fc" id="L78">            currentInventory--;</span>
+<span class="fc" id="L79">            return true;</span>
+        }
+<span class="nc" id="L81">        return false;</span>
+    }
+    /*Counting resource of the inventory*/
+    public int countResource(ID id){ /*Counts the resource from the inventory return amount if there is, otherwise 0*/
+<span class="fc bfc" id="L85" title="All 2 branches covered.">        for(Resource r : resources.keySet()){</span>
+<span class="fc bfc" id="L86" title="All 2 branches covered.">            if(r.getId().equals(id))</span>
+<span class="fc" id="L87">                return resources.get(r);</span>
+<span class="fc" id="L88">        }</span>
+<span class="fc" id="L89">        return 0;</span>
+    }
+    public Resource getResource(ID id){
+<span class="fc bfc" id="L92" title="All 2 branches covered.">        if(countResource(id)&gt;0)</span>
+<span class="pc bpc" id="L93" title="1 of 2 branches missed.">            for(Resource r : resources.keySet())</span>
+<span class="fc bfc" id="L94" title="All 2 branches covered.">                if(r.getId().equals(id))</span>
+<span class="fc" id="L95">                    return r;</span>
+<span class="fc" id="L96">        return null;</span>
+    }
+    /*Checking the capacity of inventory*/
+    public boolean checkCapacity(){
+<span class="pc bpc" id="L100" title="1 of 2 branches missed.">        if(currentInventory&lt;=capacity)</span>
+<span class="fc" id="L101">            return true;</span>
+<span class="nc" id="L102">        return false;</span>
+    }
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

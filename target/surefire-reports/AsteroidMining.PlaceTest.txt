@@ -1,0 +1,16 @@
+-------------------------------------------------------------------------------
+Test set: AsteroidMining.PlaceTest
+-------------------------------------------------------------------------------
+Tests run: 6, Failures: 2, Errors: 1, Skipped: 0, Time elapsed: 0.132 s <<< FAILURE! - in AsteroidMining.PlaceTest
+testRemoveRobot  Time elapsed: 0.012 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <null> but was: <AsteroidMining.TeleportationGate@1d02af26>
+	at AsteroidMining.PlaceTest.testRemoveRobot(PlaceTest.java:67)
+
+testRemoveSettler  Time elapsed: 0.025 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <null> but was: <AsteroidMining.Asteroid@a146b11>
+	at AsteroidMining.PlaceTest.testRemoveSettler(PlaceTest.java:55)
+
+testGetNeighbour  Time elapsed: 0.02 s  <<< ERROR!
+java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0
+	at AsteroidMining.PlaceTest.testGetNeighbour(PlaceTest.java:76)
+
