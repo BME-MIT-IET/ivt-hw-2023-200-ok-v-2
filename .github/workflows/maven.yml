@@ -38,12 +38,14 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
    
+   
     - name: Generate JaCoCo Badge
 #      if: ${{ github.ref == 'refs/heads/master' }}
       uses: cicirello/jacoco-badge-generator@v2.9.0
       with:
         jacoco-csv-file: target/site/jacoco/jacoco.csv
         badges-directory: target/site/jacoco/badges
+        
         
     - name: Publish coverage report to GitHub Pages
 #      if: ${{ github.ref == 'refs/heads/master' }}
