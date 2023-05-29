@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Game.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">gs-maven</a> &gt; <a href="index.source.html" class="el_package">AsteroidMining</a> &gt; <span class="el_source">Game.java</span></div><h1>Game.java</h1><pre class="source lang-java linenums">package AsteroidMining;
+import javax.imageio.ImageIO;
+
+import AsteroidMining.Resources.STATE;
+
+import java.awt.*;
+import java.awt.image.BufferStrategy;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.nio.Buffer;
+import java.util.ArrayList;
+import java.util.HashMap;
+
+public class Game extends Canvas implements Runnable{
+
+    private Thread thread;
+<span class="nc" id="L18">    protected static boolean running = true;</span>
+
+<span class="nc" id="L20">    public static int WIDTH = 1000;</span>
+<span class="nc" id="L21">    public static int HEIGHT = WIDTH / 12 * 9;</span>
+    Handler handler;
+<span class="nc" id="L23">    BufferedImage backImg = null;</span>
+    Settler settler;
+    HashMap&lt;Resource, Integer&gt; nResources;
+    SunStorm sunStorm;
+<span class="nc" id="L27">    public static STATE gameState = STATE.Menu;</span>
+<span class="nc" id="L28">    public boolean paused = false;</span>
+    Menu menu;
+
+<span class="nc" id="L31">    public Game(){</span>
+
+<span class="nc" id="L33">        menu = new Menu(this, handler);</span>
+
+<span class="nc" id="L35">        handler = new Handler();</span>
+<span class="nc" id="L36">        nResources = new HashMap&lt;Resource, Integer&gt;();</span>
+<span class="nc" id="L37">        nResources.put(new Carbon(), 1);</span>
+<span class="nc" id="L38">        nResources.put(new Iron(), 1);</span>
+<span class="nc" id="L39">        nResources.put(new Uranium(), 1);</span>
+<span class="nc" id="L40">        nResources.put(new WaterIce(), 1);</span>
+
+<span class="nc" id="L42">        Settler settler = new Settler(300, 400, handler);</span>
+<span class="nc" id="L43">        Asteroid a1 = new Asteroid(100, 500, null, 10);</span>
+        //settler.setPlace(a1);
+        //a1.addVisitor(settler);
+
+<span class="nc" id="L47">        handler.addObject(new Asteroid(100, 150, new Carbon(), 10));</span>
+<span class="nc" id="L48">        handler.addObject(new Asteroid(400, 220, new Iron(), 10));</span>
+<span class="nc" id="L49">        handler.addObject(new Asteroid(700, 250, new WaterIce(), 10));</span>
+<span class="nc" id="L50">        handler.addObject(new Asteroid(600, 500, new Uranium(), 10));</span>
+<span class="nc" id="L51">        handler.addObject(a1);</span>
+<span class="nc" id="L52">        handler.addObject(settler);</span>
+
+<span class="nc" id="L54">        this.addMouseListener(menu);</span>
+<span class="nc" id="L55">        this.addKeyListener(new KeyHandler(handler, this));</span>
+
+<span class="nc" id="L57">        new Window(WIDTH, HEIGHT, &quot;Asteroid Mining&quot;, this);</span>
+
+<span class="nc" id="L59">        this.requestFocusInWindow();</span>
+
+<span class="nc" id="L61">    }</span>
+    public synchronized void start(){
+<span class="nc" id="L63">        thread = new Thread(this);</span>
+<span class="nc" id="L64">        thread.start();</span>
+<span class="nc" id="L65">        running = true;</span>
+<span class="nc" id="L66">    }</span>
+
+    public synchronized void stop() {
+        try {
+<span class="nc" id="L70">            thread.join();</span>
+<span class="nc" id="L71">            running = false;</span>
+<span class="nc" id="L72">        }catch(Exception e){</span>
+<span class="nc" id="L73">            e.printStackTrace();</span>
+<span class="nc" id="L74">        }</span>
+<span class="nc" id="L75">    }</span>
+
+    @Override
+    public void run() {
+<span class="nc" id="L79">        long lastTime = System.nanoTime();</span>
+<span class="nc" id="L80">        double amountOfTicks = 60.0;</span>
+<span class="nc" id="L81">        double ns = 1000000000/ amountOfTicks;</span>
+<span class="nc" id="L82">        double delta = 0;</span>
+<span class="nc" id="L83">        long timer = System.currentTimeMillis();</span>
+<span class="nc" id="L84">        int frames = 0;</span>
+
+<span class="nc bnc" id="L86" title="All 2 branches missed.">        while(running) {</span>
+<span class="nc" id="L87">            long now = System.nanoTime();</span>
+<span class="nc" id="L88">            delta += (now- lastTime) / ns;</span>
+<span class="nc" id="L89">            lastTime = now;</span>
+
+<span class="nc bnc" id="L91" title="All 2 branches missed.">            while(delta &gt;= 1) {</span>
+<span class="nc" id="L92">                tick();</span>
+<span class="nc" id="L93">                delta--;</span>
+
+            }
+<span class="nc bnc" id="L96" title="All 2 branches missed.">            if(running) {</span>
+                try {
+<span class="nc" id="L98">                    render();</span>
+<span class="nc" id="L99">                } catch (IOException e) {</span>
+<span class="nc" id="L100">                    e.printStackTrace();</span>
+<span class="nc" id="L101">                }</span>
+            }
+
+<span class="nc" id="L104">            frames++;</span>
+
+<span class="nc bnc" id="L106" title="All 2 branches missed.">            if(System.currentTimeMillis() - timer &gt; 1000) {</span>
+<span class="nc" id="L107">                timer += 1000;</span>
+                //System.out.println(&quot;FPS:&quot; + frames);
+<span class="nc" id="L109">                frames = 0;</span>
+            }
+<span class="nc" id="L111">        }</span>
+<span class="nc" id="L112">        stop();</span>
+<span class="nc" id="L113">    }</span>
+    /*Ending the game, exittting*/
+    public void endGame(){
+<span class="nc" id="L116">        System.out.println(&quot;Game Over&quot;);</span>
+<span class="nc" id="L117">        System.exit(1);</span>
+<span class="nc" id="L118">    }</span>
+
+    /*Creating sunstorm for fixed time*/
+    public void createSunStorm(int x, int y, int time){
+<span class="nc" id="L122">        sunStorm = new SunStorm(x,y, time);</span>
+<span class="nc bnc" id="L123" title="All 2 branches missed.">        for(GameObject obj : handler.objects){</span>
+<span class="nc bnc" id="L124" title="All 2 branches missed.">            if(obj instanceof Place){</span>
+<span class="nc" id="L125">                Asteroid a1 = (Asteroid) obj;</span>
+<span class="nc" id="L126">                sunStorm.collisionWith(a1);</span>
+<span class="nc" id="L127">                System.out.println(&quot;collisionWith(a1)&quot;);</span>
+            }
+<span class="nc" id="L129">        }</span>
+<span class="nc" id="L130">    }</span>
+    public void determinePerihelion() {
+<span class="nc" id="L132">        System.out.println(&quot;determinePerihelion()&quot;);</span>
+
+<span class="nc bnc" id="L134" title="All 2 branches missed.">        if(handler!=null){</span>
+<span class="nc" id="L135">            handler.checkAsteroids();</span>
+        }
+
+<span class="nc" id="L138">    }</span>
+
+    private void tick() {
+        //System.out.println(&quot;Tick!&quot;);
+<span class="nc" id="L142">        handler.tick();</span>
+<span class="nc" id="L143">    }</span>
+
+    public void render() throws IOException {
+<span class="nc" id="L146">        BufferStrategy bs = this.getBufferStrategy();</span>
+<span class="nc bnc" id="L147" title="All 2 branches missed.">        if(bs==null) {</span>
+<span class="nc" id="L148">            this.createBufferStrategy(3);</span>
+<span class="nc" id="L149">            return;</span>
+        }
+
+<span class="nc" id="L152">        Graphics g = bs.getDrawGraphics();</span>
+<span class="nc" id="L153">        g.setColor(Color.BLACK);</span>
+<span class="nc" id="L154">        BufferedImage op=null;</span>
+<span class="nc bnc" id="L155" title="All 2 branches missed.">        if(gameState==STATE.Game) {</span>
+            try {
+<span class="nc" id="L157">                backImg = ImageIO.read(new File(&quot;Assets/space.png&quot;));</span>
+<span class="nc" id="L158">                op = ImageIO.read(new File(&quot;Assets/operations.png&quot;));</span>
+<span class="nc" id="L159">                g.drawImage(backImg, 0, 0, this);</span>
+<span class="nc" id="L160">            } catch (IOException e) {</span>
+<span class="nc" id="L161">                e.printStackTrace();</span>
+<span class="nc" id="L162">            }</span>
+<span class="nc" id="L163">            handler.render(g);</span>
+<span class="nc" id="L164">            g.drawImage(op, 670, 550, 400, 150, null);</span>
+        }
+<span class="nc bnc" id="L166" title="All 2 branches missed.">        else if(gameState==STATE.Menu){</span>
+<span class="nc" id="L167">            menu.render(g);</span>
+        }
+
+
+
+<span class="nc" id="L172">        g.dispose();</span>
+<span class="nc" id="L173">        bs.show();</span>
+<span class="nc" id="L174">    }</span>
+
+    public static void main(String args[]){
+<span class="nc" id="L177">        Game game = new Game();</span>
+
+<span class="nc" id="L179">        System.out.println(&quot;Hello&quot;);</span>
+<span class="nc" id="L180">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

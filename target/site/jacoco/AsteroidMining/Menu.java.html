@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Menu.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">gs-maven</a> &gt; <a href="index.source.html" class="el_package">AsteroidMining</a> &gt; <span class="el_source">Menu.java</span></div><h1>Menu.java</h1><pre class="source lang-java linenums">package AsteroidMining;
+
+import javax.imageio.ImageIO;
+
+import AsteroidMining.Resources.STATE;
+
+import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+
+public class Menu extends MouseAdapter{
+
+    private Game game;
+    private Handler handler;
+<span class="nc" id="L19">    BufferedImage back = null;</span>
+<span class="nc" id="L20">    BufferedImage logo = null, play, exit;</span>
+
+<span class="nc" id="L22">    public Menu(Game game,Handler handler) {</span>
+<span class="nc" id="L23">        this.game = game;</span>
+<span class="nc" id="L24">        this.handler = handler;</span>
+        try {
+<span class="nc" id="L26">            back= ImageIO.read(new File(&quot;Assets/space.png&quot;));</span>
+<span class="nc" id="L27">            logo= ImageIO.read(new File(&quot;Assets/logo.png&quot;));</span>
+<span class="nc" id="L28">            play= ImageIO.read(new File(&quot;Assets/play.png&quot;));</span>
+<span class="nc" id="L29">            exit= ImageIO.read(new File(&quot;Assets/exit.png&quot;));</span>
+
+<span class="nc" id="L31">        } catch (IOException e) {</span>
+<span class="nc" id="L32">            e.printStackTrace();</span>
+<span class="nc" id="L33">        }</span>
+<span class="nc" id="L34">    }</span>
+    public void mousePressed(MouseEvent e) {
+<span class="nc" id="L36">        int mouseX = e.getX();</span>
+<span class="nc" id="L37">        int mouseY = e.getY();</span>
+
+<span class="nc bnc" id="L39" title="All 6 branches missed.">        if(game.gameState== STATE.End || game.gameState==STATE.Menu &amp;&amp; !game.paused) {</span>
+<span class="nc bnc" id="L40" title="All 2 branches missed.">            if(mouseOver(mouseX, mouseY, 400, 350, 200, 80)) {</span>
+<span class="nc" id="L41">                game.gameState = STATE.Game;</span>
+
+            }
+<span class="nc bnc" id="L44" title="All 2 branches missed.">            if(mouseOver(mouseX, mouseY, 400, 450, 200, 80)) {</span>
+<span class="nc" id="L45">                System.exit(1);</span>
+                //game.gameState = STATE.Game;
+            }
+
+        }
+
+<span class="nc" id="L51">    }</span>
+
+
+    private boolean mouseOver(int mouseX, int mouseY, int x, int y, int width, int height) {
+<span class="nc bnc" id="L55" title="All 4 branches missed.">        if(mouseX &gt; x &amp;&amp; mouseX &lt; x+width) {</span>
+<span class="nc bnc" id="L56" title="All 4 branches missed.">            if(mouseY &gt; y &amp;&amp; mouseY &lt; y+height){</span>
+<span class="nc" id="L57">                return true;</span>
+<span class="nc" id="L58">            }else return false;</span>
+<span class="nc" id="L59">        }else return false;</span>
+    }
+
+
+    public void tick() {
+
+<span class="nc" id="L65">    }</span>
+    public void render(Graphics g) {
+        //System.out.print(&quot;menu&quot;);
+        //g.drawImage(backImg,0,0, WIDTH/2, HEIGHT/2, null);
+<span class="nc" id="L69">        g.drawImage(back, 0, 0, game.WIDTH, game.HEIGHT, null);</span>
+<span class="nc" id="L70">        g.drawImage(logo, 150, 50, 700, 200, null);</span>
+
+<span class="nc" id="L72">        Font font = new Font(&quot;arial&quot;, 1, 40);</span>
+<span class="nc" id="L73">        Font font2 = new Font(&quot;arial&quot;, 1, 30);</span>
+
+
+<span class="nc bnc" id="L76" title="All 2 branches missed.">        if(game.gameState==STATE.End) {</span>
+
+        }
+
+<span class="nc" id="L80">        g.setColor(Color.white);</span>
+<span class="nc" id="L81">        g.setFont(font2);</span>
+
+<span class="nc" id="L83">        g.drawImage(play, 400, 350, 200, 80, null);</span>
+<span class="nc" id="L84">        g.drawImage(exit,400, 450, 200, 80, null);</span>
+
+
+
+<span class="nc" id="L88">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

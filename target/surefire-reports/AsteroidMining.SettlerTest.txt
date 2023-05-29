@@ -1,0 +1,16 @@
+-------------------------------------------------------------------------------
+Test set: AsteroidMining.SettlerTest
+-------------------------------------------------------------------------------
+Tests run: 14, Failures: 3, Errors: 0, Skipped: 0, Time elapsed: 0.383 s <<< FAILURE! - in AsteroidMining.SettlerTest
+testDrillOnFullyDrilled  Time elapsed: 0.023 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <false> but was: <true>
+	at AsteroidMining.SettlerTest.testDrillOnFullyDrilled(SettlerTest.java:70)
+
+buildRobot  Time elapsed: 0.027 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
+	at AsteroidMining.SettlerTest.buildRobot(SettlerTest.java:119)
+
+testTravel  Time elapsed: 0.036 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <AsteroidMining.Asteroid@9b5f3c7> but was: <AsteroidMining.Asteroid@74024f3>
+	at AsteroidMining.SettlerTest.testTravel(SettlerTest.java:99)
+
