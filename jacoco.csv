@@ -2,8 +2,8 @@ GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_
 gs-maven,AsteroidMining,Handler,71,62,13,7,14,20,10,7,3,4
 gs-maven,AsteroidMining,Iron,3,15,0,0,2,5,0,1,0,1
 gs-maven,AsteroidMining,Visitor,26,137,4,8,7,37,5,12,1,10
-gs-maven,AsteroidMining,ID,0,114,0,0,0,12,0,1,0,1
 gs-maven,AsteroidMining,GameObject,34,58,0,0,11,14,7,6,7,6
+gs-maven,AsteroidMining,ID,0,114,0,0,0,12,0,1,0,1
 gs-maven,AsteroidMining,Window,59,0,0,0,16,0,3,0,3,0
 gs-maven,AsteroidMining,Place,0,69,0,0,0,18,0,8,0,8
 gs-maven,AsteroidMining,Menu,191,0,20,0,37,0,15,0,5,0
@@ -11,14 +11,14 @@ gs-maven,AsteroidMining,SpaceShip,56,178,5,17,14,39,6,14,2,7
 gs-maven,AsteroidMining,Direction,44,0,0,0,5,0,1,0,1,0
 gs-maven,AsteroidMining,WaterIce,3,21,0,0,2,8,0,2,0,2
 gs-maven,AsteroidMining,Robot,48,44,7,0,9,11,6,4,2,4
-gs-maven,AsteroidMining,Resource,5,10,0,0,3,3,3,2,3,2
-gs-maven,AsteroidMining,KeyHandler,134,0,28,0,47,0,24,0,3,0
 gs-maven,AsteroidMining,Game,392,0,20,0,103,0,21,0,11,0
+gs-maven,AsteroidMining,KeyHandler,134,0,28,0,47,0,24,0,3,0
+gs-maven,AsteroidMining,Resource,5,10,0,0,3,3,3,2,3,2
 gs-maven,AsteroidMining,Asteroid,119,183,14,16,29,52,11,16,3,9
 gs-maven,AsteroidMining,Carbon,3,15,0,0,2,5,0,1,0,1
 gs-maven,AsteroidMining,SunStorm,2,56,2,10,2,16,4,6,2,2
 gs-maven,AsteroidMining,TeleportationGate,2,17,0,0,2,7,2,4,2,4
 gs-maven,AsteroidMining,Settler,340,367,43,23,74,98,34,10,5,6
-gs-maven,AsteroidMining,Uranium,3,15,0,0,2,5,0,1,0,1
 gs-maven,AsteroidMining,RadioActiveAsteroid,1,7,0,0,1,2,1,1,1,1
+gs-maven,AsteroidMining,Uranium,3,15,0,0,2,5,0,1,0,1
 gs-maven,AsteroidMining.Resources,STATE,44,0,0,0,4,0,1,0,1,0
