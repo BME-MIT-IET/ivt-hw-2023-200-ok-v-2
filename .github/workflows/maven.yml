@@ -29,9 +29,25 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build with Maven
-      run: mvn -B package --file pom.xml
-    - name: Upload coverage reports to Codecov
-      uses: codecov/codecov-action@v3
+      run: mvn -B package --file pom.xml   
+      
+    - name: Create coverage
+      run: mvn jacoco:report
+      
+    - name: Generate JaCoCo Badge
+#      if: ${{ github.ref == 'refs/heads/master' }}
+      uses: cicirello/jacoco-badge-generator@v2.9.0
+      with:
+        jacoco-csv-file: target/site/jacoco/jacoco.csv
+        badges-directory: target/site/jacoco/badges
+        
+        
+    - name: Publish coverage report to GitHub Pages
+#      if: ${{ github.ref == 'refs/heads/master' }}
+      uses: JamesIves/github-pages-deploy-action@v4
+      with:
+        folder: target/site/jacoco
+
     - name: Build and push
       uses: mr-smithers-excellent/docker-build-push@v6
       with:
@@ -39,3 +55,4 @@ jobs:
         registry: docker.io
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
+   
