@@ -32,7 +32,7 @@ jobs:
       run: mvn -B package --file pom.xml   
       
     - name: Create coverage
-      run: mvn jacoco:coverage
+      run: mvn jacoco:report
       
     - name: Generate JaCoCo Badge
 #      if: ${{ github.ref == 'refs/heads/master' }}
